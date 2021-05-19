@@ -1,0 +1,68 @@
+= Example Articles REST API
+
+:toc:
+:icons: font
+:quick-uri: http://asciidoctor.org/docs/asciidoc-syntax-quick-reference/
+
+Simple example application which serves httphandler on given port.
+The API serves objects called "articles".
+
+The code snippet exposes REST-APIs:
+
+----
+GET /articles -> return all articles
+POST /article -> create or update an article
+DELETE /article/{id} -> delete given article
+GET /article/{id} -> will return given article
+----
+== build golang application
+----
+#build service
+env GOOS=linux GOARCH=amd64 go build -o ./app/myservice.bin
+
+#build docker image
+./build.sh build
+----
+
+== run golang application
+----
+#run unit tests
+go test -v azure-backend-service
+
+#Run local go:
+go run main.go
+
+#Run docker:
+./build.sh run
+
+#Run docker-compose:
+docker-compose up && docker-compose rm -fsv
+----
+Open a browser and hit URL:
+
+* Hello World: http://localhost:8000/
+* GET Articles: http://localhost:8000/articles
+* SwaggerUI: http://localhost:8000/swaggerui/
+
+
+
+== SwaggerUI
+
+Install SwaggerUI according to the blog of   https://ribice.medium.com/serve-swaggerui-within-your-golang-application-5486748a5ed4[Emir Ribic]
+
+=== Downloading SwaggerUI files
+
+SwaggerUI can be downloaded from their https://github.com/swagger-api/swagger-ui[GitHub Repo]. Once downloaded, place the content of *dist* folder somewhere in your Go project. For example, swaggerui.
+
+After that, move swagger.json file to swaggerui folder, and inside index.html change url to ./swagger.json (url: "./swagger.json").
+
+=== Generate swagger.json
+To generate a swagger.json file use https://github.com/go-swagger/go-swagger[go-swagger]
+
+Check: https://goswagger.io/use/spec.html
+----
+swagger generate spec -o ./swaggerui/swagger.json /m
+----
+
+=== Test swagger.json
+Test swagger.json in https://editor.swagger.io/#/

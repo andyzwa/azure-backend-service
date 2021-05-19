@@ -1,0 +1,140 @@
+{
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "schemes": [
+    "http"
+  ],
+  "swagger": "2.0",
+  "info": {
+    "description": "This is a example over how to create the api from the source.",
+    "title": "API REST EXAMPLE",
+    "version": "0.1.0"
+  },
+  "host": "localhost:8000",
+  "basePath": "/",
+  "paths": {
+    "/article": {
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "Articles"
+        ],
+        "operationId": "createNewArticle",
+        "parameters": [
+          {
+            "description": "article to create or update",
+            "name": "article",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Article"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Article response",
+            "schema": {
+              "$ref": "#/definitions/Article"
+            }
+          }
+        }
+      }
+    },
+    "/article/{id}": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "Articles"
+        ],
+        "operationId": "returnSingleArticle",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "ID of article to get",
+            "name": "id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      },
+      "delete": {
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "Articles"
+        ],
+        "operationId": "deleteArticle",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "ID of article to delete",
+            "name": "id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/articles": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "Articles"
+        ],
+        "operationId": "returnAllArticles",
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Article": {
+      "description": "Article - Our struct for all articles",
+      "type": "object",
+      "properties": {
+        "color": {
+          "type": "string",
+          "x-go-name": "Desc"
+        },
+        "content": {
+          "type": "string",
+          "x-go-name": "Content"
+        },
+        "id": {
+          "type": "string",
+          "x-go-name": "Id"
+        },
+        "title": {
+          "type": "string",
+          "x-go-name": "Title"
+        }
+      },
+      "x-go-package": "azure-backend-service"
+    }
+  }
+}

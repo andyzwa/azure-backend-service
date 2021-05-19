@@ -1,0 +1,8 @@
+version: '3.3'
+services:
+  azure-golang-service:
+    image: azure-backend-service:latest
+    container_name: azure-backend-service
+    ports:
+      - 8000:8000
+    
