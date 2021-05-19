@@ -10,7 +10,7 @@
   ],
   "swagger": "2.0",
   "info": {
-    "description": "This is a example over how to create the api from the source.",
+    "description": "This is an example. This API serves article objects.",
     "title": "API REST EXAMPLE",
     "version": "0.1.0"
   },

@@ -1,6 +1,6 @@
 // API REST EXAMPLE
 //
-// This is a example over how to create the api from the source.
+// This is an example. This API serves article objects.
 //
 //     Schemes: http
 //     Host: localhost:8000
